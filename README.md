@@ -1,138 +1,75 @@
-<!-- Header banner -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=220&section=header&text=Harshad%20Rawat&fontSize=52&fontColor=ffffff&fontAlignY=38&desc=Java%20Backend%20Developer&descSize=20&descAlignY=60&animation=fadeIn" alt="Harshad Rawat banner" />
+<h1 align="center">Hi, I'm Harshad Rawat 👋</h1>
 
-<div align="center">
+<p align="center">
+  <b>Java Backend Developer</b> · Spring Boot · REST APIs · Distributed Systems Basics<br/>
+  Bengaluru, India · Open to SDE / Java Developer roles
+</p>
 
-<!-- Animated typing line -->
-<a href="https://github.com/HarshadRawat">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3000&pause=900&color=36BCF7&center=true&vCenter=true&width=640&lines=Java+%C2%B7+Spring+Boot+%C2%B7+REST+APIs;Building+secure+%26+well-tested+backend+systems;Real-time+WebSockets+%C2%B7+JWT+%C2%B7+MySQL;Open+to+SDE+%2F+Java+Developer+roles" alt="Typing animation" />
-</a>
-
-<br/>
-
-<a href="https://www.linkedin.com/in/harshad-rawat-011406292/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-<a href="https://leetcode.com/u/Harshad_Rawat12/"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode"/></a>
-<a href="mailto:harshadrawat157@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<img src="https://komarev.com/ghpvc/?username=HarshadRawat&label=Profile%20Views&color=2c5364&style=for-the-badge" alt="Profile views"/>
-
-</div>
+<p align="center">
+  <a href="https://www.linkedin.com/in/harshad-rawat-011406292"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="mailto:harshadrawat157@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-D14836?logo=gmail&logoColor=white" alt="Email"/></a>
+  <a href="https://drive.google.com/file/d/1Xgpc4VQ2NeM81n5LkFrjUALpZd2zvHPE/view?usp=drive_link"><img src="https://img.shields.io/badge/Resume-View-2ea44f" alt="Resume"/></a>
+</p>
 
 ---
 
-## 👋 About Me
-
-Final-year Computer Science student at **Acharya Institute of Technology, Bengaluru**, who enjoys turning real-world problems into clean, secure, and well-tested software.
-
-- 🔭 I build backend systems with **Java** and **Spring Boot**
-- 🔐 I care about **authentication, authorization and data privacy**
-- ⚡ My latest project, **LifeLink**, uses **real-time WebSocket alerts** to connect hospitals with blood donors
-- 🧩 I practise **Data Structures & Algorithms** on LeetCode
-- 🎯 Looking for **Software Development Engineer / Java Developer** opportunities
-
----
-
-## 🛠️ Tech Stack
-
-**Languages**
-
-<img src="https://skillicons.dev/icons?i=java,c,cpp" alt="Languages" />
-
-**Backend & Databases**
-
-<img src="https://skillicons.dev/icons?i=spring,hibernate,mysql,postgres" alt="Backend and databases" />
-
-**Tools**
-
-<img src="https://skillicons.dev/icons?i=git,github,maven,postman,idea" alt="Tools" />
-
-<details>
-<summary><b>📋 Full skill list</b></summary>
-<br/>
-
-| Area | Skills |
-|---|---|
-| **Languages** | Java (primary), C, C++, SQL |
-| **Frameworks** | Spring Boot, Spring MVC, Spring REST, Spring Data JPA, Spring Security, Spring AOP, Hibernate |
-| **Backend concepts** | REST API design, JWT authentication, role-based authorization, layered architecture, DTO pattern, dependency injection, exception handling |
-| **Databases** | MySQL, PostgreSQL, JDBC |
-| **Tools** | Git, GitHub, Maven, Postman, IntelliJ IDEA |
-| **Core CS** | Data Structures & Algorithms, OOP, DBMS, Computer Networks (TCP/IP, HTTP/HTTPS, OSI model, DNS) |
-
-</details>
-
----
+I build backend systems that handle the hard parts: **concurrency, security, and real-time delivery**. I write down why I made each design decision and measure the results instead of guessing.
 
 ## 🚀 Featured Projects
 
-### 🩸 LifeLink: Emergency Blood Donation Platform
+### 🩸 [LifeLink](https://github.com/HarshadRawat/lifelink-blood-donor-system): Emergency Blood Donor Response Platform
+`Java 17` `Spring Boot 4` `MySQL` `Redis` `RabbitMQ` `WebSocket (STOMP)` `Docker` `GitHub Actions`
 
-[![LifeLink](https://github-readme-stats.vercel.app/api/pin/?username=HarshadRawat&repo=lifelink-blood-donor-system&theme=tokyonight&hide_border=true)](https://github.com/HarshadRawat/lifelink-blood-donor-system)
+Hospitals raise an emergency request and compatible donors nearby get alerted in real time.
 
-A full-stack platform that connects hospitals in urgent need of blood with nearby compatible donors.
+- **9.3x faster matching** (116 ms → 12.5 ms median) on 100,000 donors, using a two-tier approach: an indexed bounding-box query in MySQL, then exact Haversine distance in the JVM. Benchmark method and results are in [`docs/BENCHMARK.md`](https://github.com/HarshadRawat/lifelink-blood-donor-system/blob/main/docs/BENCHMARK.md).
+- **Prevents over-fulfilment** when many donors accept at once, using `SELECT ... FOR UPDATE` row locking. Verified with a 32-thread concurrency test.
+- **Event-driven alerts** through RabbitMQ with retry backoff and a dead-letter queue, pushed to donors over STOMP WebSockets.
+- **Security hardening:** 15-minute JWTs, refresh-token rotation with reuse detection, account lockout, and consent-based contact sharing.
+- **Engineering practice:** 22 Architecture Decision Records, 250+ backend tests, CI with coverage and Trivy scanning, and Flyway migrations.
+
+[Live demo](https://lifelink-blood-donor-system.vercel.app) · [API docs](https://lifelink-blood-donor-system.onrender.com/swagger-ui.html) · [Design decisions](https://github.com/HarshadRawat/lifelink-blood-donor-system/blob/main/DECISIONS.md)
+
+---
+
+### 🎫 [HelpDesk](https://github.com/HarshadRawat/helpdesk-backend): IT Ticket Management System
+`Java` `Spring Boot` `Spring Security` `JWT` `JPA/Hibernate` `MySQL`
+
+REST API for an ITSM portal with role-based workspaces for employees, IT agents, and admins.
+
+- JWT authentication with BCrypt, role-based access (`CUSTOMER` / `AGENT` / `ADMIN`), and ownership checks.
+- Ticket lifecycle with controlled status transitions, SLA tracking, and **optimistic locking** that returns `409 Conflict` when two agents edit the same ticket.
+- Admin audit trail with before/after diffs, pagination, filtering, and centralized exception handling.
+- Refresh-token flow for stateless sessions, with the API deployed on Railway and documented in Swagger UI.
+
+[Backend repo](https://github.com/HarshadRawat/helpdesk-backend) · [Live app](https://harshadrawat.github.io/helpdesk-frontend/) · [Swagger](https://helpdesk-backend-production-7f4522ed.up.railway.app/swagger-ui/index.html)
+
+
+## 🛠️ Tech Stack
 
 | | |
 |---|---|
-| 📍 **Geolocation matching** | Haversine filtering within a 20 km radius, sorted nearest-first |
-| 🧬 **Blood compatibility** | ABO/Rh engine covering all 8 blood groups |
-| ⚡ **Real-time alerts** | WebSocket/STOMP push instead of HTTP polling, with JWT validated on the CONNECT frame |
-| 🔒 **Privacy first** | Donor phone and email are masked until the donor consents; ownership checks prevent IDOR |
-| 🔄 **Concurrency control** | Optimistic locking (`@Version`) prevents lost updates |
-| 🧪 **Testing** | 132 automated tests (JUnit 5, Mockito, MockMvc, Spring Security Test) |
+| **Languages** | ![Java](https://img.shields.io/badge/Java-ED8B00?logo=openjdk&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-4479A1?logo=mysql&logoColor=white) ![C++](https://img.shields.io/badge/C++-00599C?logo=cplusplus&logoColor=white) |
+| **Backend** | ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?logo=springboot&logoColor=white) ![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?logo=springsecurity&logoColor=white) ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?logo=hibernate&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-000000?logo=jsonwebtokens&logoColor=white) |
+| **Data & Messaging** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white) ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?logo=rabbitmq&logoColor=white) |
+| **DevOps & Tools** | ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white) ![Maven](https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white) |
 
-`Java 17` `Spring Boot` `Spring Security` `JWT` `JPA/Hibernate` `WebSocket/STOMP` `MySQL` `React` `JUnit 5` `Mockito` `Swagger/OpenAPI`
+**Core CS:** Data Structures & Algorithms · OOP · DBMS · Computer Networks · System Design fundamentals
 
----
+## 📈 Problem Solving
 
-### 🎫 HelpDesk: Ticket Management System (REST API)
+[![LeetCode](https://img.shields.io/badge/LeetCode-Harshad__Rawat12-FFA116?logo=leetcode&logoColor=white)](https://leetcode.com/u/Harshad_Rawat12/) &nbsp; **271 problems solved**
 
-[![HelpDesk](https://github-readme-stats.vercel.app/api/pin/?username=HarshadRawat&repo=helpdesk-backend&theme=tokyonight&hide_border=true)](https://github.com/HarshadRawat/helpdesk-backend)
+## 🎓 Education
 
-A production-style backend for IT support ticket management.
+**Bachelor of Engineering in Computer Science & Engineering**, Acharya Institute of Technology (2023 – 2027)
 
-- 🔐 Stateless **JWT authentication** with a custom security filter and BCrypt password hashing
-- 👥 **Role-based authorization** for `CUSTOMER`, `AGENT` and `ADMIN`, with ownership checks returning HTTP 403
-- 🔁 Enforced ticket lifecycle: `OPEN → IN_PROGRESS → RESOLVED → CLOSED`
-- 📄 Server-side **pagination** and filtering by status and priority
-- ✅ Global exception handling and Jakarta Bean Validation
+## 🌱 Currently
 
-`Java` `Spring Boot` `Spring Security` `JWT` `JPA/Hibernate` `MySQL` `Maven`
+- Deepening system design: caching, message queues, and consistency trade-offs
+- Adding the Transactional Outbox pattern to LifeLink
+- Practising DSA on LeetCode
 
----
+## 📫 Let's talk
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-<img height="180" src="https://github-readme-stats.vercel.app/api?username=HarshadRawat&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub stats" />
-<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=HarshadRawat&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" />
-
-</div>
-
----
-
-## 🧩 LeetCode
-
-<div align="center">
-
-<a href="https://leetcode.com/u/Harshad_Rawat12/">
-  <img src="https://leetcard.jacoblin.cool/Harshad_Rawat12?theme=dark&font=Karla&ext=heatmap" alt="LeetCode stats" width="85%" />
-</a>
-
-</div>
-
----
-
-## 📚 Currently Learning
-
-![System Design](https://img.shields.io/badge/System%20Design-203a43?style=flat-square)
-![Advanced DSA](https://img.shields.io/badge/Advanced%20DSA-203a43?style=flat-square)
-![Computer Networks](https://img.shields.io/badge/Computer%20Networks-203a43?style=flat-square)
-![Production APIs](https://img.shields.io/badge/Production--ready%20APIs-203a43?style=flat-square)
-
----
-
-## 🤝 Let's Connect
-
-I'm open to **SDE / Java Developer** opportunities where I can build reliable backend systems and keep growing as an engineer. Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/harshad-rawat-011406292/) or by [email](mailto:harshadrawat157@gmail.com).
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=120&section=footer" alt="footer" />
+I'm looking for **Software Development Engineer / Java Backend** roles. The best way to reach me is [LinkedIn](https://www.linkedin.com/in/harshad-rawat-011406292) or [email](mailto:harshadrawat157@gmail.com).
